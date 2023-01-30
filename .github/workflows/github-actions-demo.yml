@@ -4,7 +4,7 @@ name: selenium
 on:
   push:
   schedule:
-    - cron: '16 17 * * *'
+    - cron: '25 17 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
