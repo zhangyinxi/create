@@ -31,7 +31,8 @@ jobs:
           sudo ln ./stmcu.txt /
           chmod -R 777 /usr/bin/chromedriver
           python ./Spider/stmcu.py
-          python ./Spider/stmcuAutoDownload.py
+          python ./Spider/stmcuAutoDownload.py > /py1.log
+          sudo cp -p /py1.log ./
           
         env:
           ST_ID: ${{ secrets.ST_NAME }}
