@@ -2,7 +2,6 @@ name: selenium
 
 # Controls when the action will run. 
 on:
-  push:
   schedule:
     - cron: '21 09 * * *'
 
@@ -28,6 +27,12 @@ jobs:
       - name: 'Working'
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
+          sudo ln ./stmcu.txt /
           chmod -R 777 /usr/bin/chromedriver
-          python ./Spider/test.py
+          python ./Spider/stmcu.py
+          python ./Spider/stmcuAutoDownload.py
+        env:
+          ST_ID: ${{ secrets.ST_NAME }}
+          COOKIE: ${{ secrets.ST_PASSWORD }}
+        
           
