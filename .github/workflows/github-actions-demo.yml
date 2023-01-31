@@ -3,7 +3,7 @@ name: selenium
 # Controls when the action will run. 
 on:
   schedule:
-    - cron: '30 03 * * *'
+    - cron: '30 07 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
