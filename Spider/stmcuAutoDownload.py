@@ -8,6 +8,9 @@ import time
 import re
 import os
 
+ST_ID = os.environ["ST_ID"]
+COOKIE = os.environ["COOKIE"]
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
@@ -32,8 +35,8 @@ username    = wd.find_element(By.ID, 'username')
 password    = wd.find_element(By.ID, 'password')
 loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
  
-username.send_keys('3404018806@qq.com')
-password.send_keys('st3404018806')
+username.send_keys('ST_ID')
+password.send_keys('COOKIE')
 loginbtn.click()
  
  
