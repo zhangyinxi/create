@@ -26,8 +26,8 @@ username    = wd.find_element(By.ID, 'username')
 password    = wd.find_element(By.ID, 'password')
 loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
  
-username.send_keys(ST_ID)
-password.send_keys(COOKIE)
+username.send_keys('3404018806@qq.com')
+password.send_keys('st3404018806')
 loginbtn.click()
  
  
