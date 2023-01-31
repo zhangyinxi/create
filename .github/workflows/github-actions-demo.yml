@@ -28,11 +28,10 @@ jobs:
       - name: 'Working'
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
-          sudo ln ./stmcu.txt ./
+          sudo ln ./stmcu.txt /
           chmod -R 777 /usr/bin/chromedriver
           python ./Spider/stmcu.py
           python ./Spider/stmcuAutoDownload.py > ./py1.log
-          sudo cp -p /py1.log ./
           
         env:
           ST_ID: ${{ secrets.ST_NAME }}
