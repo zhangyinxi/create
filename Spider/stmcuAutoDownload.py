@@ -3,6 +3,7 @@
 import ctypes
 from xml.dom.minidom import Element
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import re
@@ -14,6 +15,14 @@ COOKIE = os.environ["COOKIE"]
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
  
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chromedriver = "/usr/bin/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
+wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
 wd      = webdriver.Chrome()
 #wd.set_window_position(0,0)
@@ -90,5 +99,3 @@ for k in ls:
         continue
  
     #break
- 
- 
