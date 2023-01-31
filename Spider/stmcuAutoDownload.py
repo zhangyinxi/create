@@ -7,12 +7,21 @@ from selenium.webdriver.common.by import By
 import time
 import re
 import os
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chromedriver = "/usr/bin/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
+wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
  
  
-wd      = webdriver.Chrome()
+#wd      = webdriver.Chrome()
 #wd.set_window_position(0,0)
 #wd.set_window_size(200,200)
 wd.maximize_window()
