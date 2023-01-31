@@ -27,11 +27,11 @@ jobs:
       - name: 'Working'
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
-          sudo ln ./stmcu.txt /
+          sudo cp -f ./Spider/stmcu.txt /
           chmod -R 777 /usr/bin/chromedriver
           python3 ./Spider/stmcu.py
           python3 ./Spider/stmcuAutoDownload.py
-          
+          sudo cp -f /stmcu.txt ./Spider
         env:
           ST_ID: ${{ secrets.ST_NAME }}
           COOKIE: ${{ secrets.ST_PASSWORD }}
