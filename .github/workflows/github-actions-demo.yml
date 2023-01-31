@@ -28,5 +28,8 @@ jobs:
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          python ./Spider/test.py
-         
+          python ./Spider/stmcu.py
+          python ./Spider/stmcuAutoDownload.py
+          env:
+            ST_ID=${{ secrets.ST_NAME }}
+            COOKIE=${{ secrets.ST_PASSWORD }}
