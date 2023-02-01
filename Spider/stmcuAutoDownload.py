@@ -4,6 +4,7 @@ from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from util import *
 import time
 import re
 import os
