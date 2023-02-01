@@ -1,8 +1,8 @@
 name: selenium
 
-
 # Controls when the action will run. 
 on:
+  push:
   schedule:
     - cron: '21 09 * * *'
 
@@ -26,13 +26,10 @@ jobs:
       - name: 'Install requirements'
         run: pip install -r ./Spider/requirements.txt
       - name: 'Working'
-        env:
-          ST_ID: ${{ secrets.ST_NAME }}
-          COOKIE: ${{ secrets.ST_PASSWORD }}
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          python3 ./Spider/stmcu.py
-          python3 ./Spider/stmcuAutoDownload.py
+          python ./Spider/stmcu.py
+          python ./Spider/stmcuAutoDownload.py ${{ secrets.ST_NAME }} ${{ secrets.ST_PASSWORD }}
         
           
