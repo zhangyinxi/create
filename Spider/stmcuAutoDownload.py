@@ -1,7 +1,7 @@
-#from ctypes import WinDLL
+from ctypes import WinDLL
 import ctypes
-from xml.dom.minidom import Element
 from selenium import webdriver
+from xml.dom.minidom import Element
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
