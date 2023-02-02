@@ -1,6 +1,6 @@
-from ctypes import WinDLL
+#from ctypes import WinDLL
 import ctypes
-from selenium import webdriver
+#from selenium import webdriver
 from xml.dom.minidom import Element
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
