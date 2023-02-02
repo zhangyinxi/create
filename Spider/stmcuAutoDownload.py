@@ -1,70 +1,47 @@
+
 #from ctypes import WinDLL
 import ctypes
-#from selenium import webdriver
 from xml.dom.minidom import Element
-from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
 import os
 
-
 username = sys.argv[1]
 password = sys.srgv[2]
-
+ 
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
- 
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
-
-
-chromedriver = "/usr/bin/chromedriver"
-os.environ["webdriver.chrome.driver"] = chromedriver
-driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
-driver      = webdriver.Chrome()
+ 
+wd      = webdriver.Chrome()
 #wd.set_window_position(0,0)
 #wd.set_window_size(200,200)
-driver.maximize_window()
+wd.maximize_window()
  
 #step1 登录
-def st(driver):
-    try:
-
-        driver = get_web_driver()
-        driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
-        driver.find_element_by_xpath("//*[@id='username']").send_keys(username)
-        driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
-        driver.find_element_by_xpath("//*[@type='submit']").click
-
-    finally:
-        driver.quit()
-
-if __name__ == '__main__':
-    driver = get_web_driver()
-    st(driver)
-
-
-#username    = driver.find_element(By.ID, 'username')
-#password    = driver.find_element(By.ID, 'password')
-#loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
+wd.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
+username    = wd.find_element(By.ID, 'username')
+password    = wd.find_element(By.ID, 'password')
+loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
  
-#username.send_keys(St_Id)
-#password.send_keys(Cookie)
-#loginbtn.click()
+username.send_keys(username)
+password.send_keys(password)
+loginbtn.click()
  
  
 #"""
-driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
+wd.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
  
-es      = driver.find_elements(By.CLASS_NAME, 'cd_lan')
+es      = wd.find_elements(By.CLASS_NAME, 'cd_lan')
 i   = 0
 maxup       = 10
     #print(e.get_attribute('href'))
@@ -100,7 +77,7 @@ for e in es:
         ls.append(e.get_attribute('href'))
     else:
         curindex = curindex + 1
-    #driver.execute_script('window.open("'+e.get_attribute('href')+'")')
+    #wd.execute_script('window.open("'+e.get_attribute('href')+'")')
     if j >= curindex + DAYLYMAXDOWNLOAD:
         break
 stmcu.saveparam(str(curindex+DAYLYMAXDOWNLOAD))
@@ -108,15 +85,15 @@ stmcu.saveparam(str(curindex+DAYLYMAXDOWNLOAD))
 for k in ls:
     try:
         print(k)
-        driver.execute_script('window.open("'+k+'")')
-        handles = driver.window_handles
-        driver.switch_to.window(handles[-1])
-        item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
+        wd.execute_script('window.open("'+k+'")')
+        handles = wd.window_handles
+        wd.switch_to.window(handles[-1])
+        item = wd.find_element(By.XPATH, '//*[@id="down_load_btn"]')
         item.click()
-        driver.switch_to.window(handles[1])
+        wd.switch_to.window(handles[1])
         time.sleep(5)
     except:
-        driver.get_screenshot_as_png()
+        wd.get_screenshot_as_png()
         continue
  
     #break
