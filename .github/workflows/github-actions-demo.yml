@@ -39,3 +39,5 @@ jobs:
           chmod -R 777 /usr/bin/chromedriver
           python ./Spider/stmcu.py
           python ./Spider/stmcuAutoDownload.py ${{ secrets.ST_NAME }} {{ secrets.ST_PASSWORD }}
+          
+          
