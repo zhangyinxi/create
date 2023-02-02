@@ -1,3 +1,4 @@
+import ctypes
 from PIL import Image
 import cv2, numpy as np
 from retrying import retry
@@ -8,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from xml.dom.minidom import Element
 
 chrome_options = webdriver.ChromeOptions()
@@ -15,6 +17,7 @@ chrome_options.add_argument('--no-sandbox') # 解决DevToolsActivePort文件不�
 chrome_options.add_argument('window-size=1920x1080') # 指定浏览器分辨率
 chrome_options.add_argument('--disable-gpu') # 谷歌文档提到需要加上这个属性来规避bug
 chrome_options.add_argument('--headless') # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
+chrome_options.add_argument('--disable-dev-shm-usage')
 
 def get_web_driver():
     chromedriver = "/usr/bin/chromedriver"
