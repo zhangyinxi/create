@@ -9,16 +9,27 @@ img_path = os.getcwd() + "/1.png"
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
 
-wd      = webdriver.Chrome()
-#wd.set_window_position(0,0)
-#wd.set_window_size(200,200)
-wd.maximize_window()
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+
+chromedriver = "/usr/bin/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
+driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
+
+driver      = webdriver.Chrome()
+#driver.set_window_position(0,0)
+#driver.set_window_size(200,200)
+driver.maximize_window()
  
 #step1 登录
-wd.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
-username    = wd.find_element(By.ID, 'username')
-password    = wd.find_element(By.ID, 'password')
-loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
+driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
+username    = driver.find_element(By.ID, 'username')
+password    = driver.find_element(By.ID, 'password')
+loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
  
 username.send_keys(username)
 password.send_keys(password)
@@ -26,9 +37,9 @@ loginbtn.click()
  
  
 #"""
-wd.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
+driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
  
-es      = wd.find_elements(By.CLASS_NAME, 'cd_lan')
+es      = driver.find_elements(By.CLASS_NAME, 'cd_lan')
 i   = 0
 maxup       = 10
     #print(e.get_attribute('href'))
@@ -72,15 +83,15 @@ stmcu.saveparam(str(curindex+DAYLYMAXDOWNLOAD))
 for k in ls:
     try:
         print(k)
-        wd.execute_script('window.open("'+k+'")')
-        handles = wd.window_handles
-        wd.switch_to.window(handles[-1])
-        item = wd.find_element(By.XPATH, '//*[@id="down_load_btn"]')
+        driver.execute_script('window.open("'+k+'")')
+        handles = driver.window_handles
+        driver.switch_to.window(handles[-1])
+        item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
         item.click()
-        wd.switch_to.window(handles[1])
+        driver.switch_to.window(handles[1])
         time.sleep(5)
     except:
-        wd.get_screenshot_as_png()
+        driver.get_screenshot_as_png()
         continue
  
     #break
