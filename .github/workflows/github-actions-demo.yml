@@ -2,7 +2,7 @@ name: selenium
 
 # Controls when the action will run. 
 on:
-  push:
+  #push:
   schedule:
     - cron: '21 09 * * *'
 
@@ -18,13 +18,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
+        
       # Runs a single command using the runners shell
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
-           python-version: 3.7
+           python-version: 3.6
+           
       - name: 'Install requirements'
-        run: pip install -r ./Spider/requirements.txt
+        run: |
+         pip install --upgrade pip
+         pip install -r ./Spider/requirements.txt
+        
+      - name: Prepare chromedriver
+        uses: nanasess/setup-chromedriver@v1
+        
       - name: 'Working'
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
