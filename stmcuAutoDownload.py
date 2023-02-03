@@ -30,10 +30,10 @@ chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
 
-driver      = webdriver.Chrome()
+#driver      = webdriver.Chrome()
 #driver.set_window_position(0,0)
 #driver.set_window_size(200,200)
-driver.maximize_window()
+#driver.maximize_window()
  
 #step1 登录
 driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
