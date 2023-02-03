@@ -1,5 +1,17 @@
 
 #from ctypes import WinDLL
+from selenium import webdriver
+import ctypes
+#from selenium import webwd
+from xml.dom.minidom import Element
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import re
+import os
 from util import *
 
 username = sys.argv[1]
@@ -10,12 +22,10 @@ FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
-
-
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
