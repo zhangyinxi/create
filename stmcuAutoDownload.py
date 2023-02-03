@@ -29,8 +29,8 @@ username    = driver.find_element(By.ID, 'username')
 password    = driver.find_element(By.ID, 'password')
 loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
  
-username.send_keys('username')
-password.send_keys('password')
+username.send_keys(username)
+password.send_keys(password)
 loginbtn.click()
  
  
