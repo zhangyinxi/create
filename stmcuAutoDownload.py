@@ -1,17 +1,5 @@
 
 #from ctypes import WinDLL
-from selenium import webdriver
-import ctypes
-#from selenium import webwd
-from xml.dom.minidom import Element
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-import re
-import os
 from util import *
 
 username = sys.argv[1]
@@ -41,8 +29,8 @@ username    = driver.find_element(By.ID, 'username')
 password    = driver.find_element(By.ID, 'password')
 loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
  
-username.send_keys(username)
-password.send_keys(password)
+username.send_keys('username')
+password.send_keys('password')
 loginbtn.click()
  
  
