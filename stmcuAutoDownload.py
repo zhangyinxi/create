@@ -24,15 +24,21 @@ driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedr
 #driver.maximize_window()
  
 #step1 登录
-driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
-username    = driver.find_element(By.ID, 'username')
-password    = driver.find_element(By.ID, 'password')
-loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
- 
-username.send_keys(username)
-password.send_keys(password)
-loginbtn.click()
- 
+@retry(stop_max_attempt_number=5)
+def moyupai():
+    try:
+        driver = get_web_driver()
+        driver.get("https://sso.stmicroelectronics.cn/User/LoginByPassword")
+        driver.find_element_by_xpath("//*[@id='username']").send_keys(username)
+        driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
+        driver.find_element_by_xpath("//*[@class='an_lan']").click()
+    except:
+        raise
+    finally:
+        driver.quit()
+
+if __name__ == '__main__':
+    moyupai()
  
 #"""
 driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
