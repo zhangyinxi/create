@@ -65,6 +65,7 @@ jobs:
       # 使用上面的 sh 脚本提交和推送
       - name: run script
         run: chmod +x ./update-repo.sh&&./update-repo.sh
+        
       # 或者使用 git 命令
       - name: check for changes
         run: git status
