@@ -3,8 +3,8 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-    #branches: [ main ]
+  push:
+    branches: [ main ]
   # pull_request:
   #   branches: [ main ]
   #schedule:
@@ -43,7 +43,35 @@ jobs:
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
           #sudo cp ./stmcu.txt /
+          #sudo cp ./stmcu.py /
+          #sudo cp ./stmcuAutoDownload.py /
           python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
-          #sudo cp -f /stmcu.txt ./
+
+      - uses: actions/checkout@v2
+        with:
+          # personal access token
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      # 修改文件的操作
+      - name: modify files
+        run: node ./stmcu.txt
+      # 配置 git
+      - name: config git
+        run: git config --global user.email "18768633819@163.com"&&git config --global user.name "zhangyinxi"
+      # 使用上面的 sh 脚本提交和推送
+      - name: run script
+        run: chmod +x ./update-repo.sh&&./update-repo.sh
+      # 或者使用 git 命令
+      - name: check for changes
+        run: git status
+      - name: stage changed files
+        run: git add .
+      - name: commit changed files
+        run: git commit -m "update by github actions"
+      - name: push code to master
+        run: git push origin master
           
