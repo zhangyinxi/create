@@ -42,20 +42,37 @@ jobs:
         run: |
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
-          #sudo cp ./stmcu.txt /
+          sudo cp ./stmcu.txt /
           #sudo cp ./stmcu.py /
           #sudo cp ./stmcuAutoDownload.py /
           python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Cache Primes
+        id: cache-primes
+        uses: actions/cache@v3
         with:
+         path: prime-numbers
+         key: ${{ secrets.ST_PASSWORD }}
+
+      - name: Generate Prime Numbers
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /stmcu.txt -d prime-numbers
+
+      - name: Use Prime Numbers
+        run: /stmcu.txt -d prime-numbers
+
+      #- uses: actions/checkout@v2
+        #with:
           # personal access token
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+          #token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      #- name: Use Node.js ${{ matrix.node-version }}
+        #uses: actions/setup-node@v1
+        #with:
+          #node-version: ${{ matrix.node-version }}
       # 修改文件的操作
       - name: modify files
         run: node ./stmcu.txt
