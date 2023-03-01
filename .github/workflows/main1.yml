@@ -30,7 +30,7 @@ jobs:
         
         - name: 'Working'
           run: |
-            sudo cp -p ./stmcu.txt /
+            sudo cp -p /stmcu.txt ./
             sudo cp -p /stmcu.txt ~/.gradle
             sudo cp -p ./stmcuAutoDownload.py ~/.gradle
             sudo cp -p ./stmcuAutoDownload.py ~/.gradle
