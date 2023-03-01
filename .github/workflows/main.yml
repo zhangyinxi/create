@@ -46,7 +46,7 @@ jobs:
           #sudo cp ./stmcu.py /
           #sudo cp ./stmcuAutoDownload.py /
           python3 ./stmcu.py
-          python3 ./stmcuAutoDownload.py > ~/py1.log 2>&1 ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          python3 ./stmcuAutoDownload.py > ./py1.log 2>&1 ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
 
       #- uses: actions/checkout@v2
         #with:
