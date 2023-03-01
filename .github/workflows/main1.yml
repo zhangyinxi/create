@@ -26,6 +26,7 @@ jobs:
           with:
              path: |
                 ~/.gradle
+                key: ${{ secrets.ST_PASSWORD }}
         
         - name: 'Working'
           run: |
