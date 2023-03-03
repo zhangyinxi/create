@@ -48,3 +48,16 @@ jobs:
           sudo cp -p ./util.py /usr/bin/
           python3 /usr/bin/stmcu.py
           python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          
+          
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm run dist
+      - uses: ./
+        with:
+          file-path: /usr/bin/stmcu.txt
+          commit-msg: Update dist file
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
