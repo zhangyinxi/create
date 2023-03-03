@@ -42,9 +42,10 @@ jobs:
         run: |
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
-          sudo cp -p ./stmcu.txt /usr
-          sudo cp -p ./stmcu.py /usr
-          sudo cp -p ./stmcuAutoDownload.py /home
-          python3 /home/stmcu.py
-          python3 /home/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          sudo cp -p ./stmcu.txt /usr/bin/
+          sudo cp -p ./stmcu.py /usr/bin/
+          sudo cp -p ./stmcuAutoDownload.py /usr/bin/
+          chmod -R 777 /usr/bin/stmcuAutoDownload.py
+          python3 /usr/bin/stmcu.py
+          python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
             
