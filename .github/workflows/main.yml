@@ -64,7 +64,7 @@ jobs:
          git_token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
          commit_user: 'zhangyinxi'
          commit_email: '18768633819@163.com'
-         push_dir: 'creat'
+         push_dir: './'
          repository_url: 'Repository https clone URL after "https://github.com/zhangyinxi/create.git"'
          # keep_history: false # default false, not keep history
          # branch: master # default master
