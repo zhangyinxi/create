@@ -58,7 +58,7 @@ jobs:
           python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
       - name: Push dir to Git
-        uses: liziwl/git-push-action@master
+        uses: liziwl/git-push-action@main
         with:
          git_token_holder: 'zhangyinxi'
          git_token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
