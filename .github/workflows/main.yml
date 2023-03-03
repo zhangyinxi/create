@@ -45,5 +45,6 @@ jobs:
           sudo cp -p ./stmcu.txt /usr/bin/
           sudo cp -p ./stmcu.py /usr/bin/
           sudo cp -p ./stmcuAutoDownload.py /usr/bin/
+          sudo cp -p ./util.py /usr/bin/
           python3 /usr/bin/stmcu.py
           python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
