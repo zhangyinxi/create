@@ -49,15 +49,24 @@ jobs:
           python3 /usr/bin/stmcu.py
           python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
           
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Overwrite file
-        uses: "DamianReeves/write-file-action@master"
+          
+          
+      - uses: actions/checkout@master
+      - name: copy file
+        uses: canastro/copy-file-action@master
         with:
-          path: ./stmcu.txt
-          write-mode: overwrite
-          contents: |
-              /usr/bin/stmcu.txt
+          source: "/usr/bin/stmcu.txt"
+          target: "./stmcu.txt"
+      
+      #- name: Checkout repo
+        #uses: actions/checkout@v3
+
+      #- name: Overwrite file
+        #uses: "DamianReeves/write-file-action@master"
+        #with:
+          #path: ./stmcu.txt
+          #write-mode: overwrite
+          #contents: |
+              #/usr/bin/stmcu.txt
             
 
