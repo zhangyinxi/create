@@ -42,21 +42,23 @@ jobs:
         run: |
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
-          sudo cp -p ./stmcu.txt /usr/bin/
-          sudo cp -p ./stmcu.py /usr/bin/
-          sudo cp -p ./stmcuAutoDownload.py /usr/bin/
-          sudo cp -p ./util.py /usr/bin/
-          python3 /usr/bin/stmcu.py
-          python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          #sudo cp -p ./stmcu.txt /usr/bin/
+          #sudo cp -p ./stmcu.py /usr/bin/
+          #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
+          #sudo cp -p ./util.py /usr/bin/
+          python3 stmcu.py
+          python3 stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
           
           
-      - name: Release
-        uses: fnkr/github-action-ghr@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          #GHR_COMPRESS: xz
-          GHR_PATH: ./usr/bin/stmcu.txt
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Checkout date
+        uses: moonrailgun/branch-filestorage-action@v1.2.2
+        with:
+           path: ./
+      - name: Read and show
+        run: cat ./
+      - name: update date
+        run: echo $(./) > ./
       
       
       #- name: Checkout repo
