@@ -54,11 +54,11 @@ jobs:
       - name: Checkout date
         uses: moonrailgun/branch-filestorage-action@v1.2.2
         with:
-           path: ./
+           path: ./stmcu.txt
       - name: Read and show
-        run: cat ./
+        run: cat ./stmcu.txt
       - name: update date
-        run: echo $(./) > ./
+        run: echo $(./stmcu.txt) > ./stmcu.txt
       
       
       #- name: Checkout repo
