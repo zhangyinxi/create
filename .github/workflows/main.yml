@@ -45,12 +45,12 @@ jobs:
         run: |
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
-          #sudo cp -p ./stmcu.txt /usr/bin/
-          #sudo cp -p ./stmcu.py /usr/bin/
-          #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
-          #sudo cp -p ./util.py /usr/bin/
-          python3 ./stmcu.py
-          python3 ./stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          sudo cp -p ./stmcu.txt /usr/bin/
+          sudo cp -p ./stmcu.py /usr/bin/
+          sudo cp -p ./stmcuAutoDownload.py /usr/bin/
+          sudo cp -p ./util.py /usr/bin/
+          python3 /usr/bin/stmcu.py
+          python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
           
           
           
@@ -64,7 +64,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
         # 修改文件的操作
       - name: modify files
-        run: node ./stmcu.txt
+        run: node /usr/bin/stmcu.txt
         # 配置 git
       - name: config git
         run: git config --global user.email "18768633819@163.com"&&git config --global user.name "zhangyinxi"
