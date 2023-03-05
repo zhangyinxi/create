@@ -42,12 +42,12 @@ jobs:
         run: |
           #sudo cp -p ./chromedriver /usr/bin/
           #chmod -R 777 /usr/bin/chromedriver
-          #sudo cp -p ./stmcu.txt /usr/bin/
-          #sudo cp -p ./stmcu.py /usr/bin/
-          #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
-          #sudo cp -p ./util.py /usr/bin/
-          python3 stmcu.py
-          python3 stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
+          sudo cp -p ./stmcu.txt /usr/bin/
+          sudo cp -p ./stmcu.py /usr/bin/
+          sudo cp -p ./stmcuAutoDownload.py /usr/bin/
+          sudo cp -p ./util.py /usr/bin/
+          python3 /usr/bin/stmcu.py
+          python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
           
           
       - uses: actions/checkout@v2
@@ -56,9 +56,9 @@ jobs:
         with:
            path: ./stmcu.txt
       - name: Read and show
-        run: cat ./stmcu.txt
+        run: cat /usr/bin/stmcu.txt
       - name: update date
-        run: echo $(./stmcu.txt) > ./stmcu.txt
+        run: echo $(/usr/bin/stmcu.txt) > ./stmcu.txt
       
       
       #- name: Checkout repo
