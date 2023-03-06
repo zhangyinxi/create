@@ -1,10 +1,11 @@
 class Stmcu:
     def saveparam(self,arg):
-        f       = open("stmcu.txt",'w')
+        f       = open("/usr/bin/stmcu.txt",'w')
         f.write(arg)
         f.close()
+
     def getparam(self):
-        f2      = open("stmcu.txt",'r')
+        f2      = open("/usr/bin/stmcu.txt",'r')
         content = f2.read()
         f2.close()
         return content
