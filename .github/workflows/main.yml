@@ -56,7 +56,7 @@ jobs:
       - uses: eunchurn/action-publish@v1.1.1
         env:
            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-           BRANCH_NAME: 'main' #optional defaults to master
+           BRANCH_NAME: 'master' #optional defaults to master
            USER_NAME: 'Automated publisher' #optional defaults to "Automated publisher"
            USER_EMAIL: 'https://github.com/zhangyinxi/create.git' #optional defaults to "actions@users.noreply.github.com"
           
