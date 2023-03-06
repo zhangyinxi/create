@@ -58,7 +58,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
            BRANCH_NAME: 'main' #optional defaults to master
            USER_NAME: 'Automated publisher' #optional defaults to "Automated publisher"
-           USER_EMAIL: 'actions@users.noreply.github.com' #optional defaults to "actions@users.noreply.github.com"
+           USER_EMAIL: 'https://github.com/zhangyinxi/create.git' #optional defaults to "actions@users.noreply.github.com"
           
           
       #- uses: actions/checkout@v2
