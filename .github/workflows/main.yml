@@ -3,7 +3,7 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
+  #push:
     branches: [ main ]
   # pull_request:
   #   branches: [ main ]
@@ -46,6 +46,9 @@ jobs:
           sudo cp -p ./stmcu.py /usr/bin/
           sudo cp -p ./stmcuAutoDownload.py /usr/bin/
           sudo cp -p ./util.py /usr/bin/
+          chmod -R 777 /usr/bin/stmcu.txt
+          chmod -R 777 /usr/bin/stmcu.py
+          chmod -R 777 /usr/bin/stmcuAutoDownload.py
           python3 /usr/bin/stmcu.py
           python3 /usr/bin/stmcuAutoDownload.py ${{ secrets.ST_USERNAME }} {{ secrets.ST_PASSWORD }}
           
