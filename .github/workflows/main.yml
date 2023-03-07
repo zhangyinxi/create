@@ -40,8 +40,8 @@ jobs:
         
       - name: 'Working'
         run: |
-          sudo cp -p ./chromedriver /usr/bin/
-          chmod -R 777 /usr/bin/chromedriver
+          ＃sudo cp -p ./chromedriver /usr/bin/
+          ＃chmod -R 777 /usr/bin/chromedriver
           #sudo cp -p ./stmcu.txt /usr/bin/
           #sudo cp -p ./stmcu.py /usr/bin/
           #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
