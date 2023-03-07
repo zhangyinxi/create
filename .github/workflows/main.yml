@@ -50,7 +50,7 @@ jobs:
           #chmod -R 777 /usr/bin/stmcu.py
           #chmod -R 777 /usr/bin/stmcuAutoDownload.py
           python3 ./stmcu.py
-          python3 ./stmcuAutoDownload.py
+          python3 ./stmcuAutoDownload.py "${{ secrets.ST_USERNAME }}" "${{ secrets.ST_PASSWORD }}"
           
           
       - uses: eunchurn/action-publish@v1.1.1
