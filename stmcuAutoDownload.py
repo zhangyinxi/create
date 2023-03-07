@@ -1,37 +1,65 @@
  
 #from ctypes import WinDLL
 import ctypes
+#from selenium import webwd
 from xml.dom.minidom import Element
-from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
 import os
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--no-sandbox') # 解决DevToolsActivePort文件不存在的报错
-chrome_options.add_argument('window-size=1920x1080') # 指定浏览器分辨率
-chrome_options.add_argument('--disable-gpu') # 谷歌文档提到需要加上这个属性来规避bug
-chrome_options.add_argument('--headless') # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
- 
+
+username = sys.argv[1]
+password = sys.srgv[2]
+
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
  
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+
+chromedriver = "/usr/bin/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
+wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
-wd      = webdriver.Chrome()
+driver      = webdriver.Chrome()
 #wd.set_window_position(0,0)
 #wd.set_window_size(200,200)
-wd.maximize_window()
+driver.maximize_window()
  
 #step1 登录
-wd.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
-username    = wd.find_element(By.ID, 'username')
-password    = wd.find_element(By.ID, 'password')
-loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
+def st(driver):
+    try:
+
+        driver = get_web_driver()
+        driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
+        driver.find_element_by_xpath("//*[@id='username']").send_keys(username)
+        driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
+        driver.find_element_by_xpath("//*[@type='submit']").click
+
+    finally:
+        driver.quit()
+
+if __name__ == '__main__':
+    driver = get_web_driver()
+    st(driver)
+
+
+#username    = driver.find_element(By.ID, 'username')
+#password    = driver.find_element(By.ID, 'password')
+#loginbtn    = driver.find_element(By.XPATH, '//input[@type="submit"]')
  
-username.send_keys('3404018806@qq.com')
-password.send_keys('St3404018806/')
-loginbtn.click()
+#username.send_keys(St_Id)
+#password.send_keys(Cookie)
+#loginbtn.click()
  
 #"""
 driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
