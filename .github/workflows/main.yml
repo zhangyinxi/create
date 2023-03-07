@@ -3,7 +3,7 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  ＃push:
+  #push:
     branches: [ main ]
   # pull_request:
   #   branches: [ main ]
@@ -40,8 +40,8 @@ jobs:
         
       - name: 'Working'
         run: |
-          ＃sudo cp -p ./chromedriver /usr/bin/
-          ＃chmod -R 777 /usr/bin/chromedriver
+          #sudo cp -p ./chromedriver /usr/bin/
+          #chmod -R 777 /usr/bin/chromedriver
           #sudo cp -p ./stmcu.txt /usr/bin/
           #sudo cp -p ./stmcu.py /usr/bin/
           #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
