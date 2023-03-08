@@ -28,7 +28,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
-wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
+driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
 driver      = webdriver.Chrome()
 #wd.set_window_position(0,0)
@@ -100,7 +100,7 @@ for e in es:
         ls.append(e.get_attribute('href'))
     else:
         curindex = curindex + 1
-    #wd.execute_script('window.open("'+e.get_attribute('href')+'")')
+    #driver.execute_script('window.open("'+e.get_attribute('href')+'")')
     if j >= curindex + DAYLYMAXDOWNLOAD:
         break
 stmcu.saveparam(str(curindex+DAYLYMAXDOWNLOAD))
