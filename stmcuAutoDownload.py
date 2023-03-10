@@ -1,7 +1,12 @@
-from util import ＊ 
-
-username = sys.argv[1]
-password = sys.srgv[2]
+#from ctypes import WinDLL
+import ctypes
+#from selenium import webwd
+from xml.dom.minidom import Element
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+import re
+import os
 
 FIRSTTIME           = 1666200000
 DAYLYMAXDOWNLOAD    = 29
@@ -15,7 +20,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
-driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
+wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
 driver      = webdriver.Chrome()
 #wd.set_window_position(0,0)
@@ -23,21 +28,14 @@ driver      = webdriver.Chrome()
 driver.maximize_window()
  
 #step1 登录
-def st(driver):
-    try:
-
-        driver = get_web_driver()
-        driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
-        driver.find_element_by_xpath("//*[@id='username']").send_keys(username)
-        driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
-        driver.find_element_by_xpath("//*[@type='submit']").click
-
-    finally:
-        driver.quit()
-
-if __name__ == '__main__':
-    driver = get_web_driver()
-    st(driver)
+wd.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
+username    = wd.find_element(By.ID, 'username')
+password    = wd.find_element(By.ID, 'password')
+loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
+ 
+username.send_keys('3404018806@qq.com')
+password.send_keys('St3404018806/')
+loginbtn.click()
 
 
 #username    = driver.find_element(By.ID, 'username')
@@ -47,6 +45,8 @@ if __name__ == '__main__':
 #username.send_keys(St_Id)
 #password.send_keys(Cookie)
 #loginbtn.click()
+ 
+ 
  
 #"""
 driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
