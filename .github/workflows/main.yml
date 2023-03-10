@@ -3,12 +3,12 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+  #push:
+    #branches: [ main ]
   # pull_request:
   #   branches: [ main ]
-  #schedule:
-    #- cron: '0 23 * * *'
+  schedule:
+    - cron: '00 00 * * *'
   # Allows you to run this workflow manually from the Actions tab
 #  workflow_dispatch:
 
@@ -40,20 +40,9 @@ jobs:
         
       - name: 'Working'
         run: |
-          #sudo cp -p ./chromedriver /usr/bin/
-          #chmod -R 777 /usr/bin/chromedriver
-          #sudo cp -p ./stmcu.txt /usr/bin/
-          #sudo cp -p ./stmcu.py /usr/bin/
-          #sudo cp -p ./stmcuAutoDownload.py /usr/bin/
-          #sudo cp -p ./util.py /usr/bin/
-          #chmod -R 777 /usr/bin/stmcu.txt
-          #chmod -R 777 /usr/bin/stmcu.py
-          #chmod -R 777 /usr/bin/stmcuAutoDownload.py
           python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py
           sudo rm -rf ./*.pdf
-          
-          
           
       - uses: eunchurn/action-publish@v1.1.1
         env:
@@ -61,28 +50,3 @@ jobs:
            BRANCH_NAME: 'main' #optional defaults to master
            USER_NAME: 'Automated publisher' #optional defaults to "Automated publisher"
            USER_EMAIL: 'https://github.com/zhangyinxi/create.git' #optional defaults to "actions@users.noreply.github.com"
-          
-          
-      #- uses: actions/checkout@v2
-      #- name: Checkout date
-        #uses: moonrailgun/branch-filestorage-action@v1.2.2
-        #with:
-           #path: ./stmcu.txt
-      #- name: Read and show
-        #run: cat /usr/bin/stmcu.txt
-      #- name: update date
-        #run: echo $(/usr/bin/stmcu.txt) > ./stmcu.txt
-      
-      
-      # name: Checkout repo
-        #uses: actions/checkout@v3
-
-      #- name: Overwrite file
-        #uses: "DamianReeves/write-file-action@master"
-        #with:
-          #path: ./stmcu.txt
-          #write-mode: overwrite
-          #contents: |
-              #/usr/bin/stmcu.txt
-            
-
