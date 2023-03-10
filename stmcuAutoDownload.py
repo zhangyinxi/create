@@ -28,7 +28,7 @@ driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedr
 #driver.maximize_window()
  
 #step1 登录
-wd.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
+driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
 username    = wd.find_element(By.ID, 'username')
 password    = wd.find_element(By.ID, 'password')
 loginbtn    = wd.find_element(By.XPATH, '//input[@type="submit"]')
