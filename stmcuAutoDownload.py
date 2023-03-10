@@ -20,7 +20,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
-wd = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
+driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
 driver      = webdriver.Chrome()
 #wd.set_window_position(0,0)
