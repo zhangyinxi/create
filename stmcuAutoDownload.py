@@ -1,17 +1,4 @@
- 
-#from ctypes import WinDLL
-import ctypes
-#from selenium import webwd
-from xml.dom.minidom import Element
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-import re
-import os
-
+from util import ＊ 
 
 username = sys.argv[1]
 password = sys.srgv[2]
