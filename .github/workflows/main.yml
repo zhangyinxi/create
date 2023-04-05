@@ -43,6 +43,7 @@ jobs:
           python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py
           sudo rm -rf ./*.pdf
+          sudo rm -rf ./*.zip
           
       - uses: eunchurn/action-publish@v1.1.1
         env:
