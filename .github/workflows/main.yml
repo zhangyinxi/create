@@ -40,7 +40,6 @@ jobs:
         
       - name: 'Working'
         run: |
-          python3 ./stmcu.py
           python3 ./stmcuAutoDownload.py
           sudo rm -rf ./*.pdf
           sudo rm -rf ./*.zip
