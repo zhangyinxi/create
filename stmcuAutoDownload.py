@@ -98,7 +98,7 @@ for k in ls:
         driver.execute_script('window.open("'+k+'")')
         handles = driver.window_handles
         driver.switch_to.window(handles[-1])
-        item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
+        item = driver.find_element(By.XPATH, '//div[@id="down_load_btn"]')
         item.click()
         time.sleep(3)
         driver.find_element(By.XPATH, '//button[@class="st-modal-common-btn pull-right agree-btn"]').click()
