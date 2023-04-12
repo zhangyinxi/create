@@ -16,7 +16,11 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
-
+chrome_options.addArguments("start-maximized")
+chrome_options.addArguments("enable-automation")
+chrome_options.addArguments("--disable-infobars")
+chrome_options.addArguments("--disable-browser-side-navigation")
+driver = new ChromeDriver(options);
 
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
@@ -100,7 +104,7 @@ for k in ls:
         driver.switch_to.window(handles[-1])
         item = driver.find_element(By.XPATH, '//*[@class="download-btn"]')
         item.click()
-        time.sleep(1)
+        time.sleep(3)
         itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
         itec.click()
         driver.switch_to.window(handles[1])
