@@ -20,7 +20,6 @@ chrome_options.addArguments("start-maximized")
 chrome_options.addArguments("enable-automation")
 chrome_options.addArguments("--disable-infobars")
 chrome_options.addArguments("--disable-browser-side-navigation")
-driver = new ChromeDriver(options)
 
 chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
