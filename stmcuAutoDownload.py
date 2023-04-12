@@ -22,10 +22,10 @@ chromedriver = "/usr/bin/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=chromedriver)
  
-driver      = webdriver.Chrome()
+#driver      = webdriver.Chrome()
 #wd.set_window_position(0,0)
 #wd.set_window_size(200,200)
-driver.maximize_window()
+#driver.maximize_window()
  
 #step1 登录
 driver.get('https://sso.stmicroelectronics.cn/User/LoginByPassword')
@@ -104,8 +104,8 @@ for k in ls:
         driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]').click()
         driver.switch_to.window(handles[1])
         time.sleep(5)
-    except:
-        driver.get_screenshot_as_png()
-        continue
+    #except:
+        #driver.get_screenshot_as_png()
+        #continue
  
     #break
