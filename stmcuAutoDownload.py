@@ -106,6 +106,6 @@ for k in ls:
         time.sleep(5)
     #except:
         #driver.get_screenshot_as_png()
-        #continue
+        continue
  
     #break
