@@ -97,10 +97,10 @@ for k in ls:
         driver.execute_script('window.open("'+k+'")')
         handles = driver.window_handles
         driver.switch_to.window(handles[-1])
-        item = driver.find_element(By.XPATH, '//*[@class="download-btn"]')
+        item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
         item.click()
         time.sleep(3)
-        itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
+        itec = driver.find_element(By.XPATH, '//*[@id="agreementLicenseModal"]/div/div/div[2]/p[1]/button')
         itec.click()
         driver.switch_to.window(handles[1])
         time.sleep(5)
