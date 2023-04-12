@@ -100,12 +100,13 @@ for k in ls:
         driver.switch_to.window(handles[-1])
         item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
         item.click()
-        time.sleep(3)
-        driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]').click()
+        time.sleep(1)
+        itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
+        itec.click()
         driver.switch_to.window(handles[1])
         time.sleep(5)
-    #except:
-        #driver.get_screenshot_as_png()
+    except:
+        driver.get_screenshot_as_png()
         continue
  
     #break
