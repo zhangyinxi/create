@@ -101,7 +101,8 @@ for k in ls:
         item.click()
         time.sleep(3)
         itec = driver.find_element(By.XPATH, '//*[@id="agreementLicenseModal"]/div/div/div[2]/p[1]/button')
-        itec.click()
+        if itec:
+         itec.click()
         driver.switch_to.window(handles[1])
         time.sleep(5)
     except:
