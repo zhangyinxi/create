@@ -98,9 +98,10 @@ for k in ls:
         handles = driver.window_handles
         driver.switch_to.window(handles[-1])
         item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
-        item.click()
+        if item:
+         item.click()
         time.sleep(3)
-        itec = driver.find_element(By.XPATH, '//*[@id="agreementLicenseModal"]/div/div/div[2]/p[1]/button')
+        itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
         if itec:
          itec.click()
         driver.switch_to.window(handles[1])
