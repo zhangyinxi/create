@@ -106,7 +106,7 @@ for k in ls:
         driver.switch_to.window(handles[1])
         time.sleep(5)
     except:
-        driver.get_screenshot_as_png()
+        #driver.get_screenshot_as_png()
         continue
  
     #break
