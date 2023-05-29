@@ -48,7 +48,7 @@ loginbtn.click()
  
  
 #"""
-driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32/design_resource')
+driver.get('https://www.stmcu.com.cn/Designresource/list/STM32%20MCU/firmware_software/firmware_software')
  
 es      = driver.find_elements(By.CLASS_NAME, 'cd_lan')
 i   = 0
@@ -82,7 +82,7 @@ for e in es:
     if j < curindex:
         continue
     print(e.text)
-    if None!=re.match('https://www.stmcu.com.cn/Designresource/detail/document/[\s\S]+',e.get_attribute('href')):
+    if None!=re.match('https://www.stmcu.com.cn/Designresource/detail/firmware_software/[\s\S]+',e.get_attribute('href')):
         ls.append(e.get_attribute('href'))
     else:
         curindex = curindex + 1
@@ -99,10 +99,10 @@ for k in ls:
         driver.switch_to.window(handles[-1])
         item = driver.find_element(By.XPATH, '//*[@id="down_load_btn"]')
         item.click()
-        #time.sleep(3)
-        #itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
-        #if itec:
-        # itec.click()
+        time.sleep(3)
+        itec = driver.find_element(By.XPATH, '//*[@class="st-modal-common-btn pull-right agree-btn"]')
+        if itec:
+             itec.click()
         driver.switch_to.window(handles[1])
         time.sleep(5)
     except:
