@@ -48,7 +48,8 @@ loginbtn.click()
  
  
 #"""
-driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32MPU/design_resource')
+#driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM32MPU/design_resource')
+driver.get('https://www.stmcu.com.cn/Product/pro_detail/PRODUCTSTM8/design_resource')
  
 es      = driver.find_elements(By.CLASS_NAME, 'cd_lan')
 i   = 0
