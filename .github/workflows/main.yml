@@ -3,8 +3,8 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-    #branches: [ main ]
+  push:
+    branches: [ main ]
   # pull_request:
   #   branches: [ main ]
   schedule:
@@ -35,8 +35,17 @@ jobs:
           pip install --upgrade pip
           pip install -r ./requirements.txt
         
-      - name: Prepare chromedriver
-        uses: nanasess/setup-chromedriver@v1
+      #- name: Prepare chromedriver
+        #uses: nanasess/setup-chromedriver@v1
+
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+          # Optional: do not specify to match Chrome's version
+          chromedriver-version: '88.0.4324.96'
+      - run: |
+            export DISPLAY=:99
+            chromedriver --url-base=/wd/hub &
+            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
         
       - name: 'Working'
         run: |
